@@ -1,0 +1,16 @@
+add_library(laba6_lib INTERFACE)
+
+target_include_directories(laba6_lib INTERFACE
+		${CMAKE_CURRENT_SOURCE_DIR}
+)
+
+target_compile_features(laba6_lib INTERFACE cxx_std_20)
+
+add_executable(laba6_exe main.cpp)
+target_link_libraries(laba6_exe PRIVATE laba6_lib)
+target_compile_features(laba6_exe PRIVATE cxx_std_20)
+
+add_executable(laba6_tests tests/tests6.cpp)
+target_link_libraries(laba6_tests PRIVATE laba6_lib gtest_main)
+target_compile_features(laba6_tests PRIVATE cxx_std_20)
+add_test(NAME laba6_tests COMMAND laba6_tests)
